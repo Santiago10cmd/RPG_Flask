@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG - Vista Flask (Jinja2)</title>
+</head>
+<body>
+
+    <h1>Panel de Héroes RPG (Python Flask)</h1>
+
+    <!-- FORMULARIO ESTÁNDAR HTML (Sin JavaScript: envía por POST tradicional) -->
+    <h2>Registrar Nuevo Personaje</h2>
+    <form action="/personajes" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br><br>
+
+        <label for="clase">Clase:</label>
+        <select id="clase" name="clase">
+            <option value="Guerrero">Guerrero</option>
+            <option value="Mago">Mago</option>
+            <option value="Arquero">Arquero</option>
+        </select>
+        <br><br>
+
+        <label for="nivel">Nivel:</label>
+        <input type="number" id="nivel" name="nivel" value="1">
+        <br><br>
+
+        <label for="vida">Vida:</label>
+        <input type="number" id="vida" name="vida" value="100">
+        <br><br>
+
+        <button type="submit">Guardar Personaje</button>
+    </form>
+
+    <hr>
+
+    <!-- TABLA HTML POBLADA DESDE EL CONTROLADOR CON JINJA2 -->
+    <h2>Lista de Personajes (Server-Side Rendering)</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Clase</th>
+                <th>Nivel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in personajes %}
+            <tr>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.clase }}</td>
+                <td>{{ p.nivel }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No hay personajes registrados en memoria.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
