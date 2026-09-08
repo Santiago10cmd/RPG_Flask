@@ -1,7 +1,4 @@
-"""
-PUNTO DE ENTRADA (app.py)
-Inicializa la aplicación Flask y registra los Blueprints del Controlador.
-"""
+
 
 from flask import Flask
 from controllers.personaje_controller import personaje_bp

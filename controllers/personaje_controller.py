@@ -1,8 +1,4 @@
-"""
-CONTROLADOR (controllers/personaje_controller.py)
-Maneja las rutas GET /personajes y POST /personajes.
-Es el intermediario entre la Vista (HTML con Jinja2) y el Modelo (personaje.py).
-"""
+
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from models.personaje import Personaje, lista_personajes
