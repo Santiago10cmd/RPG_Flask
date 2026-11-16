@@ -1,0 +1,1 @@
+from services.personaje_servicio import validar_personaje

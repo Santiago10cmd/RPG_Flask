@@ -2,6 +2,7 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from models.personaje import Personaje, lista_personajes
+from services.personaje_servicio import validar_personaje
 
 personaje_bp = Blueprint('personajes', __name__)
 
@@ -34,11 +35,9 @@ def crear_personaje():
         nivel = int(request.form.get('nivel', 1))
         vida = int(request.form.get('vida', 100))
 
-        # Validación básica en el controlador / modelo
-        if not nombre:
-            return "Error: El nombre no puede estar vacío.", 400
-        if nivel < 1:
-            return "Error: El nivel debe ser mayor o igual a 1.", 400
+        # Validación delegada al servicio
+        if not validar_personaje(nombre, nivel):
+            return "Error: El nombre no puede estar vacío y el nivel debe estar entre 1 y 100.", 400
 
         # Crear y almacenar en la lista en memoria
         nuevo_personaje = Personaje(nombre, clase, nivel, vida)

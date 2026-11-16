@@ -14,7 +14,7 @@ def create_app():
 if __name__ == '__main__':
     app = create_app()
     print("==================================================")
-    print(" 🐍 Servidor Flask RPG en ejecución:")
-    print(" 🌐 Abrir en navegador: http://127.0.0.1:5000/personajes")
+    print(" Servidor Flask RPG en ejecucion:")
+    print(" Abrir en navegador: http://127.0.0.1:5000/personajes")
     print("==================================================")
     app.run(debug=True, port=5000)
